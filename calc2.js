@@ -1,5 +1,4 @@
-//答えの表示部分の要素
-const answerBox = document.getElementById('answerBox');
+const answerBox = document.getElementById('answerBox');　//答えの表示部分の要素
 let answerLength;
 
 //input欄をクリア
@@ -10,7 +9,9 @@ function clearForm() {
     document.getElementById('inputD').value = '';
 }
 
+//式の数を数える
 function count() {
+    //式が入るpタグのうち、空でないものを数える
     const countArr = [];
     document.querySelectorAll('.js_text').forEach((value) => {
         if (value.innerText !== '') {
@@ -22,7 +23,7 @@ function count() {
 
 //答えとなる式を表示
 function showFormula(array, process1, process2, process3) {
-    const symbolArray = ['+', '-', '×', '÷'];
+    const symbolArray = ['+', '-', '×', '÷']; //表示する用の演算子
     let text;
     //必要に応じて()をつける
     if ((process1 === 0 || process1 === 1) && (process2 === 2 || process2 === 3)) {
@@ -106,10 +107,8 @@ function clickFn() {
             });
         });
     });
-    //式の数を数える
+    //入力値、式の数を出力
     count();
-    //取得した4数を表示
     answerBox.insertAdjacentHTML('afterbegin', `<p>a=${a}, b=${b}, c=${c}, d=${d} のとき、答えが10となる式は以下の${answerLength}個あります。</p>`);
-    //input欄をクリア
     clearForm();
 }
